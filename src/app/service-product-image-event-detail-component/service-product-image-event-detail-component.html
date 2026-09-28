@@ -1,0 +1,15 @@
+<p>service-product-image-event-detail-component works!</p>
+<section class="detail">
+  <h2>Exercise 13: Product Details</h2>
+  <button type="button" (click)="goBack()">Go Back</button>
+  @if (selectedProduct; as product) {
+    <dl>
+      <dt>ID:</dt><dd>{{ product.ProductId }}</dd>
+      <dt>Name:</dt><dd>{{ product.ProductName }}</dd>
+      <dt>Price:</dt><dd>{{ product.Price }}</dd>
+    </dl>
+    <img [src]="product.Image" [alt]="product.ProductName" />
+  } @else {
+    <p>Product not found.</p>
+  }
+</section>

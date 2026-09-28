@@ -1,0 +1,42 @@
+<p>customer-group-component works!</p>
+<section class="customer-list">
+  <h1>Exercise 18: Customers by type</h1>
+
+  @if (errorMessage()) {
+    <p class="error" role="alert">{{ errorMessage() }}</p>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (group of customerGroups(); track group.CustomerTypeId) {
+        <tr class="group-heading">
+          <th colspan="5" scope="rowgroup">{{ group.CustomerTypeId }} - {{ group.CustomerTypeName }}</th>
+        </tr>
+        @for (customer of group.Customers; track customer.Id) {
+          <tr>
+            <td>{{ customer.Id }}</td>
+            <td>{{ customer.Name }}</td>
+            <td>{{ customer.Email }}</td>
+            <td>{{ customer.Age }}</td>
+            <td class="image-cell">
+              <img [src]="customer.Image" [alt]="customer.Name" (error)="$event.target && ($any($event.target).hidden = true)" />
+            </td>
+          </tr>
+        }
+      } @empty {
+        @if (!errorMessage()) {
+          <tr><td colspan="5" class="empty">Loading customers…</td></tr>
+        }
+      }
+    </tbody>
+  </table>
+</section>

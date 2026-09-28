@@ -11,8 +11,7 @@ describe('App', () => {
       declarations: [
         App
       ],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   it('should create the app', () => {

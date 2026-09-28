@@ -1,0 +1,5 @@
+.exercise { padding: 1rem; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #5268bd; padding: 0.35rem; text-align: left; }
+img { display: block; width: 110px; height: 110px; object-fit: contain; }
+button { border: 0; background: transparent; color: #1d4ed8; cursor: pointer; padding: 0; }

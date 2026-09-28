@@ -1,0 +1,26 @@
+<p>catalog-component works!</p>
+<main class="catalog">
+  <h2>Exercise 14: Json Array Model – Product Catalog</h2>
+  <section class="category" *ngFor="let category of categories">
+    <table class="category-heading">
+      <tbody>
+        <tr><td>Ma Danh Muc</td><td>Ten Danh Muc</td></tr>
+        <tr><td>{{ category.Cateid }}</td><td>{{ category.CateName }}</td></tr>
+      </tbody>
+    </table>
+
+    <table class="product-table">
+      <thead>
+        <tr><th>Ma San Pham</th><th>Ten San Pham</th><th>Gia San Pham</th><th>Picture</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of category.Products">
+          <td>{{ product.ProductId }}</td>
+          <td>{{ product.ProductName }}</td>
+          <td>{{ product.Price }}</td>
+          <td><img [src]="product.Image" [alt]="product.ProductName" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
