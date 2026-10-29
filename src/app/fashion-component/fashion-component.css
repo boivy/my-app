@@ -1,0 +1,15 @@
+.fashion-list {
+  margin: 2rem auto;
+  max-width: 1100px;
+  padding: 0 1rem;
+}
+
+.fashion-image {
+  height: 90px;
+  object-fit: cover;
+  width: 90px;
+}
+
+.error-message {
+  color: #b42318;
+}

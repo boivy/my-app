@@ -1,0 +1,35 @@
+<h2>Product Detail</h2>
+
+@if (errMessage()) {
+<p>{{ errMessage() }}</p>
+} @else if (product(); as selectedProduct) {
+<table border="1">
+    <tr>
+        <td>Product ID:</td>
+        <td>{{ selectedProduct.id }}</td>
+    </tr>
+    <tr>
+        <td>Product Name:</td>
+        <td>{{ selectedProduct.name }}</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>{{ selectedProduct.price }}</td>
+    </tr>
+    <tr>
+        <td>Image:</td>
+        <td>
+            <img
+                class="product-image"
+                [src]="selectedProduct.image_link"
+                [alt]="selectedProduct.name"
+            />
+        </td>
+    </tr>
+</table>
+} @else {
+<p>Loading product...</p>
+}
+<button (click)="goBack()">
+    go back
+</button>

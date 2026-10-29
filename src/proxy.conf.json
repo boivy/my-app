@@ -1,0 +1,28 @@
+[
+  {
+    "context": [
+      "/api/products",
+      "/api/products/**"
+    ],
+    "target": "https://fakestoreapi.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  {
+    "context": [
+      "/books",
+      "/books/**"
+    ],
+    "target": "http://127.0.0.1:3000"
+  },
+  {
+    "context": [
+      "/fashions",
+      "/fashions/**"
+    ],
+    "target": "http://127.0.0.1:4000"
+  }
+]

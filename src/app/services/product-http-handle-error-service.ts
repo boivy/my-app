@@ -1,13 +1,13 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { Product } from '../classes/iProduct';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductHttpHandleErrorService {
-  private _url:string="/datasets/products.json"
+  private _url:string="/dataset/product.json"
   constructor(private _http:HttpClient){}
   getProductList():Observable<Product[]>{
     return this._http.get<Product[]>(this._url)
@@ -16,9 +16,14 @@ export class ProductHttpHandleErrorService {
                 catchError(this.handleError)
             )
   }
+    getProductById(id: number): Observable<Product | undefined> {
+    return this.getProductList().pipe(
+      map((products: Product[]) => products.find(p => p.id === id)),
+      catchError(this.handleError)
+    );
+  }
   handleError(error:HttpErrorResponse)
   {
-  
   let errorMessage = 'An unknown error occurred!';
   if (error.error instanceof ErrorEvent) {
     // 1. Client-side error (e.g., network issues, subscription errors)

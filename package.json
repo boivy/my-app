@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port 4200",
+    "start": "node scripts/start.cjs",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:frontend": "node scripts/start.cjs --fashion-only --port 4200",
+    "start:admin": "node scripts/start.cjs --fashion-only --port 4001",
+    "start:client": "node scripts/start.cjs --fashion-only --port 4002"
   },
   "private": true,
   "packageManager": "npm@11.19.0",
@@ -17,6 +20,8 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
+    "bootstrap": "^5.3.8",
+    "jquery": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -30,3 +35,4 @@
     "vitest": "^4.0.8"
   }
 }
+

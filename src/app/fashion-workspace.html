@@ -1,0 +1,31 @@
+<div class="fashion-shell">
+  <header><a class="brand" routerLink="/client-fashion">FASHION<span> / JOURNAL</span></a><nav><a routerLink="/client-fashion">Khám phá</a><a routerLink="/admin-fashion">Quản trị</a></nav></header>
+  <p class="eyebrow">THE EDIT • PHONG CÁCH MỖI NGÀY</p>
+  <h1>{{ admin ? 'Quản lý Fashion' : 'Thời trang & cảm hứng' }}</h1>
+  @if (error()) { <p class="alert alert-danger" role="alert">{{error()}}</p> }
+  @if (mode() === 'list') {
+    <form class="filters" (ngSubmit)="load()"><label for="styleFilter">Tìm theo Style</label><input id="styleFilter" name="filter" [(ngModel)]="filter" list="styles" placeholder="Nhập hoặc chọn phong cách"><datalist id="styles">@for (s of styles; track s) { <option [value]="s"></option> }</datalist><button type="submit">Tìm kiếm</button><button type="button" class="secondary" (click)="filter='';load()">Tất cả</button>@if(admin){<a class="action" routerLink="/admin-fashion/new">+ Thêm Fashion</a>}</form>
+    @if(loading()){<p role="status">Đang tải dữ liệu…</p>} @else if(!error() && !items().length){<p>Chưa có Fashion phù hợp. Hãy thử Style khác hoặc chạy dữ liệu mẫu.</p>}
+    @if(admin && items().length){
+      <div class="table-wrap"><table><thead><tr><th>Thumbnail</th><th>Tiêu đề</th><th>Style</th><th>Ngày tạo</th><th>Thao tác</th></tr></thead><tbody>
+      @for(item of items(); track item._id){<tr><td><img class="thumb" [src]="item.getBase64String()" [alt]="item.fashion_subject"></td><td>{{item.fashion_subject}}</td><td>{{item.style}}</td><td>{{item.createdAt | date:'dd/MM/yyyy HH:mm'}}</td><td class="actions"><a [routerLink]="['/admin-fashion/view',item._id]">Chi tiết</a><a [routerLink]="['/admin-fashion/edit',item._id]">Sửa</a><button class="danger" (click)="remove(item)">Xóa</button></td></tr>}
+      </tbody></table></div>
+    } @else if(!admin){
+      @for(style of groups; track style){<section><h2>{{style}}</h2><div class="grid">@for(item of group(style); track item._id){<a class="card-fashion" [routerLink]="['/client-fashion',item._id]"><img [src]="item.getBase64String()" [alt]="item.fashion_subject"><small>{{item.createdAt | date:'dd.MM.yyyy'}}</small><h3>{{item.fashion_subject}}</h3><span>Đọc câu chuyện ↗</span></a>}</div></section>}
+    }
+  }
+  @if(mode() === 'detail' && selected(); as item){<article><a [routerLink]="admin ? '/admin-fashion' : '/client-fashion'">← Trở về danh sách</a><p class="eyebrow">{{item.style}} / {{item.createdAt | date:'dd.MM.yyyy'}}</p><h2>{{item.fashion_subject}}</h2><img class="cover" [src]="item.getBase64String()" [alt]="item.fashion_subject"><div class="article-body" [innerHTML]="item.fashion_detail"></div></article>}
+  @if(mode() === 'edit'){
+    <form class="edit-form" (ngSubmit)="save()"><h2>{{model._id ? 'Chỉnh sửa Fashion' : 'Thêm Fashion mới'}}</h2>
+      <label for="title">Tiêu đề</label><input id="title" name="title" [(ngModel)]="model.fashion_subject" required maxlength="200">
+      <label for="style">Style</label><input id="style" name="style" [(ngModel)]="model.style" list="editStyles" required><datalist id="editStyles">@for(s of styles;track s){<option [value]="s"></option>}</datalist>
+      <label for="image">Thumbnail (URL ảnh)</label><input id="image" name="image" [(ngModel)]="model.fashion_image" required placeholder="https://...">
+      <label id="editorLabel">Nội dung Fashion — WYSIWYG</label><div class="toolbar" role="toolbar" aria-label="Định dạng nội dung">
+        <button type="button" (mousedown)="$event.preventDefault()" (click)="command('bold')"><b>B</b></button><button type="button" (mousedown)="$event.preventDefault()" (click)="command('italic')"><i>I</i></button><button type="button" (click)="command('formatBlock','h2')">Tiêu đề</button><button type="button" (click)="command('formatBlock','p')">Đoạn văn</button><button type="button" (click)="command('insertUnorderedList')">Danh sách</button><button type="button" (click)="insertImage()">Chèn ảnh</button><button type="button" (click)="command('undo')">Hoàn tác</button>
+      </div><div #editor class="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="editorLabel"></div>
+      <div class="form-actions"><button type="submit" [disabled]="saving()">{{saving() ? 'Đang lưu…' : 'Lưu Fashion'}}</button><a routerLink="/admin-fashion">Hủy / Về danh sách</a></div>
+    </form>
+  }
+  <footer>FASHION JOURNAL · BÀI TỔNG HỢP MONGODB / EXPRESS / ANGULAR</footer>
+</div>
+

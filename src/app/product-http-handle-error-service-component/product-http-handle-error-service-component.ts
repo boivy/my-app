@@ -18,7 +18,7 @@ export class ProductHttpHandleErrorServiceComponent {
         this.products.set(data);
       },
       error:(err)=>{
-        this.errMessage.set(err)
+        this.errMessage.set(err.message || 'Request failed')
       }
     }
     )

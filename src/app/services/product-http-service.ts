@@ -7,7 +7,7 @@ import { Product } from '../classes/iProduct';
   providedIn: 'root',
 })
 export class ProductHttpService {
-  private _url:string="/datasets/products.json"
+  private _url:string="/dataset/product.json"
   constructor(private _http:HttpClient){}
   getProductList():Observable<Product[]>
   {

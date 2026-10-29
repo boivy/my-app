@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
+import { HomeworkComponent } from './homework-component/homework-component';
 import { App } from './app';
 
 describe('App', () => {
@@ -9,7 +10,7 @@ describe('App', () => {
         RouterModule.forRoot([])
       ],
       declarations: [
-        App
+        App, HomeworkComponent
       ],
     }).compileComponents();
   });
@@ -24,6 +25,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, my-app');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });
+
