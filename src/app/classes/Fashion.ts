@@ -6,6 +6,8 @@ export class Fashion {
     public fashion_detail: string = '',
     public fashion_image: string = '',
     public createdAt: string = '',
+    public IdF: number | null = null,
+    public slug: string = '',
   ) {}
   getBase64String()
     {

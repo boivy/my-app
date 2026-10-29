@@ -1,15 +1,1 @@
-.fashion-list {
-  margin: 2rem auto;
-  max-width: 1100px;
-  padding: 0 1rem;
-}
-
-.fashion-image {
-  height: 90px;
-  object-fit: cover;
-  width: 90px;
-}
-
-.error-message {
-  color: #b42318;
-}
+:host{display:block;background:#faf9f6;color:#26221e;min-height:80vh}.journal{max-width:1180px;margin:auto;padding:48px 28px}.kicker,.meta{font-size:12px;letter-spacing:2px;color:#856348}.kicker{margin-bottom:18px}h1{font:clamp(36px,5vw,60px)/1.1 Georgia,serif}.intro{color:#756d65;margin:20px 0 42px}.fashion-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}.fashion-card{color:inherit;text-decoration:none;border-bottom:1px solid #dcd4ca;padding-bottom:16px}.image-wrap{overflow:hidden;background:#eee8e0}.fashion-card img{width:100%;height:340px;object-fit:cover;transition:transform .3s}.fashion-card:hover img{transform:scale(1.035)}.fashion-card:focus-visible{outline:3px solid #856348;outline-offset:6px}.meta{margin:20px 0 10px}h2{font:28px/1.2 Georgia,serif}.slug{display:block;overflow-wrap:anywhere;color:#756d65;font-size:12px}.read{font-size:13px;margin-top:20px}@media(max-width:800px){.fashion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:500px){.fashion-grid{grid-template-columns:1fr}.journal{padding:28px 18px}}

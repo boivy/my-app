@@ -1,3 +1,5 @@
 body { font-family: Arial, sans-serif; }
 
 .article-body img, .editor img { max-width:100%; height:auto; }
+/* Keep rich Fashion content within the article on smaller screens. */
+.article-body img{max-width:100%;height:auto}

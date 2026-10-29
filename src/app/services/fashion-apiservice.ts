@@ -14,7 +14,7 @@ export class FashionAPIService {
   }
 
   getFashion(id: string): Observable<Fashion> {
-    return this.http.get<Fashion>('/fashions/' + encodeURIComponent(id)).pipe(
+    return this.http.get<Fashion>('/fashions/' + (/^[a-f\d]{24}$/i.test(id) ? '' : 'slug/') + encodeURIComponent(id)).pipe(
       map(item => Object.assign(new Fashion(), item)),
       retry(3), catchError(this.handleError));
   }

@@ -1,0 +1,21 @@
+> Building...
+√ Building...
+Initial chunk files | Names          |  Raw size
+main.js             | main           | 383.98 kB | 
+styles.css          | styles         | 277.18 kB | 
+scripts.js          | scripts        | 222.75 kB | 
+chunk-PZ5AY32C.js   | -              | 283 bytes | 
+
+                    | Initial total  | 884.19 kB
+
+Lazy chunk files    | Names          |  Raw size
+chunk-LHYKINIW.js   | lazy-component |   5.96 kB | 
+
+Application bundle generation complete. [4.000 seconds] - 2026-10-29T17:26:39.819Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+12:26:40 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+  ➜  Local:   http://localhost:4002/
+  ➜  press h + enter to show help
+12:26:41 AM [vite] (client) [optimizer] bundling dependencies...

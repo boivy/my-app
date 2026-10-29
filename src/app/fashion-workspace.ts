@@ -24,7 +24,7 @@ export class FashionWorkspace {
       this.error.set(''); this.selected.set(null);
       if (id) {
         this.mode.set(this.route.snapshot.data['edit'] ? 'edit' : 'detail');
-        this.http.get<Fashion>('/fashions/' + id).subscribe({ next: item => {
+        this.http.get<Fashion>('/fashions/' + (/^[a-f\d]{24}$/i.test(id) ? '' : 'slug/') + encodeURIComponent(id)).subscribe({ next: item => {
           this.model = Object.assign(new Fashion(), item); this.selected.set(this.model); this.cdr.markForCheck();
           setTimeout(() => { if (this.editor) this.editor.nativeElement.innerHTML = this.model.fashion_detail; });
         }, error: e => this.fail(e) });
